@@ -1,0 +1,27 @@
+<%- include('../include/head.ejs') %>
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+    <h1>Add user</h1>
+
+    <% if( topnavproperties.permissions.includes("user_create") === true || topnavproperties.permissions.includes("system") ) { %>
+        <form id="form_user_add" action="/admin/adduser" method="post">
+            <input id="input_username" name="username" type="text" placeholder="username" value="<%=response.user.username%>">
+            <input id="input_email" name="email" type="text" placeholder="email" value="<%=response.user.email%>">
+            <input id="input_password" name="password" type="password" placeholder="confirm password">
+            <input id="input_confirmpassword" name="confirmpassword" type="password" placeholder="confirm password">
+            <button id="button_save" type="submit" form="form_user_add" class="btn btn-sm btn-primary">Add</button>
+        </form>                    
+    <% } else { %>
+        <p>You do not have [user_create] create permission</p>
+    <% } %>
+
+    <div id="div_links">
+        <a href="/admin/users" id="link_back" class="btn btn-sm btn-danger">Cancel</a>
+    </div>
+
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+    
+</body>

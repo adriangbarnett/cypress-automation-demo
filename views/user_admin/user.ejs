@@ -1,0 +1,115 @@
+<%- include('../include/head.ejs') %>
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+    <h1>User</h1>
+
+    <div id="div_user">
+        <form id="form_user_edit" action="/admin/user/edit?id=<%=user.id%>" method="post">
+            <input id="input_id" name="id" type="text" value="<%=user.id%>" hidden readonly>
+            <input id="input_username" name="username" type="text" value="<%=user.username%>">
+            
+            <input id="input_email" name="email" type="text" value="<%=user.email%>">
+            <input id="input_roles" name="roles" type="roles" value="<%=user.roles%>" hidden readonly>
+            <select id="select_status" name="status" title="<%=user.status%>" value="<%=user.status%>">
+                <% for(i = 0; i != app.locals.STATUS.length; i++) { %>
+                    <option value="<%=app.locals.STATUS[i].name%>"><%=app.locals.STATUS[i].name%></option>
+                <% } %>
+            </select>
+
+            <!-- fix status -->
+
+
+            <!-- roles -->
+            <div id="table_container" class="tableContainer">
+
+                <div id="table_fixedhead" class="tableFixHead">
+
+                    <table id="table_roles" class="table table-striped table-hover"> 
+                        
+                        <thead>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Enabled</th>
+                            <th>Descriotion</th>
+                            <th>Permissions</th>
+                        </thead>
+
+                        <tbody>
+                            <% const roles = app.locals.ROLE; const currentUserRoles = topnavproperties.roles; %>
+                            <% for(r=0; r != roles.length; r++) { %>
+                            <tr>
+                                <td> <%= r %> </td>
+                                <td> <%= roles[r].name %> </td>
+                                <td> 
+                                    <%  if (roles[r].name === "system" && currentUserRoles.includes("system") === true ) { %> <!-- ===  -->
+                                    <% if (user.roles.includes(roles[r].name) === true) { %>
+                                        <!-- <label><%= roles[r].name %></label> -->
+                                        <input id="role_role.<%=roles[r].name%>" type="checkbox" name="role.<%=roles[r].name%>" checked="checked" class="pointer"><br/>
+                                    <% } %>
+                                    <% if (user.roles.includes(roles[r].name) === false) { %>
+                                        <!-- <label><%= roles[r].name %></label> -->
+                                        <input id="role_role.<%=roles[r].name%>" type="checkbox" name="role.<%=roles[r].name%>" class="pointer"><br/>
+                                    <% } %>
+                                    <% } %>
+                            
+                                    <%  if (roles[r].name !== "system") { %>
+                                    <% if (user.roles.includes(roles[r].name) === true) { %>
+                                        <!-- <label><%= roles[r].name %></label> -->
+                                        <input id="role_role.<%=roles[r].name%>" type="checkbox" name="role.<%=roles[r].name%>" checked="checked" class="pointer"><br/>
+                                    <% } %>
+                                    <% if (user.roles.includes(roles[r].name) === false) { %>
+                                        <!-- <label><%= roles[r].name %></label> -->
+                                        <input id="role_role.<%=roles[r].name%>" type="checkbox" name="role.<%=roles[r].name%>" class="pointer"><br/>
+                                    <% } %>
+                                    <% } %>
+                            
+                                    <%  if (roles[r].name === "system" && currentUserRoles.includes("system") !== true ) { %>
+                                        <% if (user.roles.includes(roles[r].name) === true) { %>
+                                            <p title="You do not have permission to touch this value" class="notAllowed ">-</p>
+                                            <div hidden> 
+                                                <!-- <label><%= roles[r].name %></label> -->
+                                                <input id="role_role.<%=roles[r].name%>" type="checkbox"  name="role.<%=roles[r].name%>" checked="checked" class="pointer"><br/>
+                                            </div>
+                                        <% } %>
+                                        <% if (user.roles.includes(roles[r].name) === false) { %>
+                                            <p title="You do not have permission to touch this value" class="notAllowed center">-</p>
+                                            <div hidden>
+                                                <!-- <label><%= roles[r].name %></label> -->
+                                                <input type="hidden" id="role.<%=roles[r].name%>" name="role.<%=roles[r].name%>" class="pointer"><br/><br/>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                </td>
+                                <td> <%= roles[r].descrption %> </td>
+                                <td> <%= roles[r].permission %> </td>
+
+                            <% } %>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </form>
+
+    </div>
+
+    <div id="div_links">
+        <a href="/admin/users" id="link_back" class="btn btn-sm btn-danger">Cancel</a>
+        <a href="/admin/user/edit?id=<%=user.id%>" id="link_reload" class="btn btn-sm btn-dark">Reload</a>
+
+        <% if( topnavproperties.permissions.includes("user_update") === true || topnavproperties.permissions.includes("system") ) { %>
+            <a id="link_changePassword" href="/admin/user/chgpwd?id=<%=user.id%>" class="btn btn-sm btn-warning">Change password</a> 
+            <button id="button_save" type="submit" form="form_user_edit" class="btn btn-sm btn-primary">Save</button>                   
+        <% } %>
+    </div>
+
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+    
+</body>
+
+ <!-- fix status select box value AFTER the form have loaded, we wil use "title" to get value -->
+ <script defer language="JavaScript" type="text/javascript" src="/js/status.js"></script>

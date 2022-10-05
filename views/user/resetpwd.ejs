@@ -1,0 +1,22 @@
+<%- include('../include/head.ejs') %>
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+    
+    <h1>Reset password</h1>
+
+    <form id="formResetPasssword" action="/resetpwd" method="post">
+        <input id="input_username" name="username" type="text" placeholder="username" autocomplete="off">
+        <button id="button_reset" type="submit" form="formResetPasssword">Reset</button>
+    </form>
+    
+
+    <!-- show link-->
+    <% if (response.message) { %>
+        <p>Reset password link: </p><a id="link_setpwd" href="<%=response.message%>"><%=response.message%></a>
+    <% } %>
+
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+    
+</body>

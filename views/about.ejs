@@ -1,0 +1,11 @@
+<%- include('./include/head.ejs') %>
+
+<body>
+    <%- include('./include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+    <h1>About</h1>
+    <p>Simple user admin database for automated testing</p>
+    
+    <%- include('./include/response.ejs', {response: response}) %>
+    <%- include('./include/alert.ejs', {response: response}) %>
+</body>

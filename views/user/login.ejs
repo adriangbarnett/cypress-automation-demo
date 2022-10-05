@@ -1,0 +1,47 @@
+<%- include('../include/head.ejs') %>
+<link href="/css/login.css" rel="stylesheet">
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+  
+    <div class="signin-container">
+
+        <main class="form-signin">
+
+            <form id="form_login" action="/login" method="post">
+
+                <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+        
+                <label for="username" class="label-username-password">Username</label>
+                <input id="input_username" class="form-control top" name="username" type="text" placeholder="username" autocomplete="off">
+    
+                <label for="password" class="label-username-password">Password</label>
+                <input id="input_password" class="form-control middle" name="password" type="password" placeholder="password" autocomplete="off">
+    
+                <p class="forgot-password"></p><a id="link_reset" href="/resetpwd" >Forgotten your password?</a></p>
+
+                <button id="button_login" type="submit" class="w-100 btn btn-lg btn-primary signin-button" form="form_login">Login</button>
+
+                <div id="div_links">
+                    <a id="link_setuser_s" href="/setuser?username=s&password=s" class="w-100 btn btn-lg btn-warning signin-button">Setuser:<strong>s</strong></a>
+                    <a id="link_setuser_a" href="/setuser?username=a&password=a" class="w-100 btn btn-lg btn-warning signin-button">Setuser:<strong>a</strong></a>
+                    <a id="link_setuser_u" href="/setuser?username=u&password=u" class="w-100 btn btn-lg btn-warning signin-button">Setuser:<strong>u</strong></a>
+                    <a id="link_setuser_u" href="/setuser?username=ro&password=ro" class="w-100 btn btn-lg btn-warning signin-button">Setuser:<strong>ro</strong></a>
+                    <a id="link_makedev" href="/makedev" class="w-100 btn btn-lg btn-danger signin-button">Make <strong>dev</strong> users</a>
+                </div>
+
+            </form>
+
+
+        </main>
+
+    </div>
+
+    
+
+</div>
+    
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+</body>

@@ -1,0 +1,18 @@
+<%- include('../include/head.ejs') %>
+<%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+<h1>Signup</h1>
+
+<form id="formSignup" action="/signup" method="post">
+    <input id="input_username" name="username" type="text" placeholder="username" autocomplete="off">
+    <input id="input_email" name="email" type="text" placeholder="email" autocomplete="off">
+    <input id="input_password" name="password" type="password" placeholder="password" autocomplete="off">
+    <input id="input_confirmpassword" name="confirmpassword" type="password" placeholder="confirm password" autocomplete="off">
+    <button id="button_login" type="submit" form="formSignup" class="btn btn-sm btn-primary">Signup</button>
+</form>
+
+<div id="div_links">
+</div>
+
+<%- include('../include/response.ejs', {response: response}) %>
+<%- include('../include/alert.ejs', {response: response}) %>

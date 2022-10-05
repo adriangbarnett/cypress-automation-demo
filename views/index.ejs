@@ -1,0 +1,13 @@
+<%- include('./include/head.ejs') %>
+
+<body>
+
+    <%- include('./include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+    
+    <h1>Index</h1>
+    <div id="div_links">
+    </div>
+    
+    <%- include('./include/response.ejs', {response: response}) %>
+    <%- include('./include/alert.ejs', {response: response}) %>
+</body>

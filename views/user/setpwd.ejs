@@ -1,0 +1,15 @@
+<%- include('../include/head.ejs') %>
+<%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+<h1>Set password</h1>
+
+<form id="formSetPasssword" action="/setpwd" method="post">
+    <input id="input_password1" name="password1" type="password" placeholder="password" autocomplete="off">
+    <input id="input_password2" name="password2" type="password" placeholder="confirm password" autocomplete="off">
+    <input id="input_token" name="token" type="token" value="<%=token%>" readonly hidden>
+    <button id="button_set" type="submit" form="formSetPasssword" class="btn btn-sm btn-primary">Submit</button>
+</form>
+
+<%- include('../include/response.ejs', {response: response}) %>
+<%- include('../include/alert.ejs', {response: response}) %>
+

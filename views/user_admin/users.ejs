@@ -1,0 +1,64 @@
+<%- include('../include/head.ejs') %>
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+    <h1>Users</h1>
+    
+    <div id="div_links">
+        <% if( topnavproperties.permissions.includes("user_create") || topnavproperties.permissions.includes("system") ) { %>
+            <a id="link_user_add" href="/admin/adduser" class="btn btn-sm btn-primary">Add user</a>
+        <% } %>
+
+        
+    </div>
+
+    <div id="div_table_wrapper">
+        <table id="table_users">
+            <thead>
+                <th>#</th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role(s)</th>
+                <th>Status</th>
+                <% if( topnavproperties.permissions.includes("user_update") || topnavproperties.permissions.includes("user_delete") || topnavproperties.permissions.includes("system") ) { %>
+                    <th>Actions</th>
+                <% } %>
+            </thead>
+            <tbody>
+                <% if (users) { %>
+                    <% for (i=0; i!=users.length; i++) { %>
+                        <tr>
+                            <td><%=i%></td>
+                            <td><%=users[i].id%></td>
+                            <td><%=users[i].username%></td>
+                            <td><%=users[i].email%></td>
+                            <td><%=users[i].roles%></td>
+                            <td><%=users[i].status%></td>
+                            
+
+                                <% if( topnavproperties.permissions.includes("user_update") || topnavproperties.permissions.includes("user_delete") || topnavproperties.permissions.includes("system") ) { %>
+                                    <td>
+                                        <% if( topnavproperties.permissions.includes("user_delete") || topnavproperties.permissions.includes("system") ) { %>
+                                            <a id="link_delete_<%=i%>" href="/admin/user/delete?id=<%=users[i].id%>" class="btn btn-sm btn-danger">Delete</a>
+                                        <% } %>
+                                        <% if( topnavproperties.permissions.includes("user_update") || topnavproperties.permissions.includes("system") ) { %>
+                                            <a id="link_edit_<%=i%>" href="/admin/user/edit?id=<%=users[i].id%>" class="btn btn-sm btn-dark">Edit</a>
+                                        <% } %>
+                                    </td>
+                                <% } %>
+                                
+                            </tr>
+                        </tr>
+   
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+</body>

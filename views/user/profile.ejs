@@ -1,0 +1,24 @@
+<%- include('../include/head.ejs') %>
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+    
+    <h1>Profile</h1>
+
+    <form id="form_profile" action="/profile" method="post">
+        <input id="input_username" name="username" type="text" placeholder="username" value="<%=response.user.username%>" autocomplete="off">
+        <input id="input_email" name="email" type="text" placeholder="email" value="<%=response.user.email%>" autocomplete="off">
+        <button id="button_submit" type="submit" form="form_profile"  class="btn btn-sm btn-primary">Submit</button>
+    </form>
+    <a id="link_changePassword" href="/profile/chgpwd" class="btn btn-sm btn-warning">Change password</a>  
+    <a id="link_cancel" href="/" class="btn btn-sm btn-danger">Cancel</a> 
+
+    <!-- show link-->
+    <% if (response.message) { %>
+        <p>Reset password link: </p><a id="link_setpwd" href="<%=response.message%>"><%=response.message%></a>
+    <% } %>
+
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+    
+</body>

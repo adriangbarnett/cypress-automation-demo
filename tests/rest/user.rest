@@ -1,0 +1,142 @@
+@auth = abc123
+
+### Add SYSTEM
+POST http://localhost:3000/api/user?auth={{auth}}
+Content-Type: application/json
+
+{
+    "username": "sss",
+    "email": "adriangbarnett@gmail.com",
+    "password": "ss",
+    "roles": ["system"],
+    "status": "active",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+### Patch SYSTEM
+PATCH http://localhost:3000/api/user?auth={{auth}}&id=63137c28eb074a1b0973aa48
+Content-Type: application/json
+
+{
+    "username": "ss",
+    "email": "adriangbarnett@gmail.com",
+    "password": "ss",
+    "roles": ["system"],
+    "status": "active",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+
+
+
+
+### Add USER ADMIN
+POST http://localhost:3000/api/user?auth={{auth}}
+Content-Type: application/json
+
+{
+    "username": "ua",
+    "email": "adriangbarnett@gmail.com",
+    "password": "ua",
+    "roles": ["user","user_admin"],
+    "status": "active",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+
+### Add USER
+POST http://localhost:3000/api/user?auth={{auth}}
+Content-Type: application/json
+
+{
+    "username": "u",
+    "email": "adriangbarnett@gmail.com",
+    "password": "u",
+    "roles": ["user"],
+    "status": "active",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+### Add PRODUCT ADMIN
+POST http://localhost:3000/api/user?auth={{auth}}
+Content-Type: application/json
+
+{
+    "username": "p",
+    "email": "adriangbarnett@gmail.com",
+    "password": "p",
+    "roles": ["user","product_admin"],
+    "status": "suspended",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+
+### Add FILE ADMIN
+POST http://localhost:3000/api/user?auth={{auth}}
+Content-Type: application/json
+
+{
+    "username": "f",
+    "email": "adriangbarnett@gmail.com",
+    "password": "f",
+    "roles": ["user","file_admin"],
+    "status": "removed",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+### Add PRODUCT and FILE ADMIN
+POST http://localhost:3000/api/user?auth={{auth}}
+Content-Type: application/json
+
+{
+    "username": "pf",
+    "email": "adriangbarnett@gmail.com",
+    "password": "pf",
+    "roles": ["user", "file_admin", "product_admin"],
+    "status": "active",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+
+### update user
+PATCH http://localhost:3000/api/user?auth={{auth}}&id=63066f34f63aaffd96d2644c
+Content-Type: application/json
+
+{
+    "username": "a",
+    "email": "adriangbarnett@gmail.com",
+    "password": "a",
+    "verified": false,
+    "firstname": "myfirstName",
+    "lastname": "myLastName",
+    "address": "123 Streen name",
+    "city": "TownName",
+    "state": "CountyName",
+    "zip": "XXX YYY",
+    "country": "United Kingdom",
+    "phonenumber": "+44 (0) 123 456",
+    "roles": ["system"],
+    "status": "active",
+    "failedLoginAttempts": 0,
+    "createdBy": "api"
+}
+
+### small patch request
+PATCH http://localhost:3000/api/user?auth={{auth}}&id=63066f34f63aaffd96d2644c
+Content-Type: application/json
+
+{
+    "updatedBy": "api"
+}
+
+### get one user by id
+GET http://localhost:3000/api/user?auth={{auth}}&id=630f9252d6e24e6e5ea97407
+
+### get all users
+GET http://localhost:3000/api/users?auth={{auth}}
+
+### Delete one user by id
+DELETE http://localhost:3000/api/user?auth={{auth}}&id=633d34ccfb98c0400758f886
+
+### Delete all users
+DELETE http://localhost:3000/api/users?auth={{auth}}

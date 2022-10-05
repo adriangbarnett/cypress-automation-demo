@@ -1,0 +1,132 @@
+<link href="/css/styles.css" rel="stylesheet">
+<link href="/css/topnav.css" rel="stylesheet">
+
+
+<% let cartTooltip = null; let cartList = null; let cartIconStyle = "empty"; %>
+<% if (!topnavproperties.cartCount === 0 ) { cartIconStyle = "empty"; cartTooltip = "Shopping cart is empty" } %> 
+<% if (topnavproperties.cartCount > 0) { cartTooltip = topnavproperties.cartCount + " item(s) in shopping cart"; cartIconStyle = "full"; } %>
+
+<div class="backdrop"></div>
+
+<header class="main-header">
+
+    <!-- mobile btn-->
+    <button id="side-menu-toggle"><i class="material-icons">&#xe5d2;</i></button>
+    <nav class="main-header__nav">
+
+        <ul class="main-header__item-list">
+
+            <% if(topnavproperties.admin !== true) { %>
+                <li class="main-header__item">
+                    <a id="link_home" href="/" class="<%=topnavproperties.home%>">Home</a>
+                </li>
+                <li class="main-header__item">
+                    <a id="link_about" href="/about" class="<%=topnavproperties.about%>">About</a>
+                </li>
+                <li class="main-header__item">
+                    <a id="link_signup" href="/signup" class="<%=topnavproperties.register%>">Signup</a>
+                </li>
+                <li class="main-header__item">
+                    <a id="link_login" href="/login" class="login <%=topnavproperties.login%>">Login</a>
+                </li>
+
+            <%  } %>
+
+            <!-- admin nav -->
+            <% if(topnavproperties.admin === true) { %>
+
+                <li class="main-header__item">
+                    <a id="link_dashboard" href="/dashboard" class="<%=topnavproperties.dashboard%>">Dashboard</a>
+                </li>
+
+                <% if(topnavproperties.roles) { %> 
+                    <% if(topnavproperties.roles.includes("user_admin") || topnavproperties.roles.includes("system") || topnavproperties.permissions.includes("user_read") ) {  %>
+                        <li class="main-header__item">
+                            <a id="link_users" href="/admin/users" class="<%=topnavproperties.users%>">Users</a>
+                        </li>
+                        <% } %>
+                <% } %>
+
+                
+                
+                <li class="main-header__item">
+                    <a id="link_profile" href="/profile"class="<%=topnavproperties.profile%>">Profile</a>
+                </li>
+                <!-- TODO fix this -->
+                <% if(topnavproperties.permissions) { %> 
+                    <% if(topnavproperties.roles.includes("user") || topnavproperties.roles.includes("system") || topnavproperties.permissions.includes("profile_read") ) {  %>
+                        <!-- <li class="main-header__item">
+                            <a href="/profile"class="<%=topnavproperties.profile%>">Profile</a>
+                        </li> -->
+                        <% } %>
+                <% } %>
+                <li class="main-header__item">
+                    <a id="link_logout" href="/logout" class="logout">Logout</a>
+                </li>
+                
+            <% } %>
+        </ul>
+    </nav>
+
+    <!-- mobile -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+
+            <%  if(topnavproperties.admin !== true) { %>
+                <li class="mobile-nav__item">
+                    <a href="/" class="<%=topnavproperties.home%>">Home</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a href="/about" class="<%=topnavproperties.about%>">About</a>
+                </li>
+                <li class="mobile-nav__item"">
+                    <a href="/signup" class="<%=topnavproperties.register%>">Signup</a>
+                </li>
+                <li class="mobile-nav__item"">
+                    <a href="/login" class="login <%=topnavproperties.login%>">Login</a>
+                </li>
+            <%  } %>
+
+            <!-- admin nav -->
+            <% if(topnavproperties.admin === true) { %>
+
+                <li class="mobile-nav__item">
+                    <a href="/dashboard" class="<%=topnavproperties.dashboard%>">Dashboard</a>
+                </li>
+   
+                <% if(topnavproperties.roles) { %> 
+                    <% if(topnavproperties.roles.includes("user_admin") || topnavproperties.roles.includes("system")  || topnavproperties.permissions.includes("user_read") ) {  %>
+                        <li class="mobile-nav__item">
+                            <a href="/admin/users" class="<%=topnavproperties.users%>">Users</a>
+                        </li>
+                        <% } %>
+                <% } %>
+
+
+                <% if(topnavproperties.permissions) { %> 
+                    <% if(topnavproperties.roles.includes("user") || topnavproperties.roles.includes("system") || topnavproperties.permissions.includes("profile_read")  ) {  %>
+                        <li class="mobile-nav__item">
+                            <a href="/profile"class="<%=topnavproperties.profile%>">Profile</a>
+                        </li>
+                        <% } %>
+                <% } %>
+                <li class="mobile-nav__item">
+                    <a href="/logout" class="">Logout</a>
+                </li>
+                
+            <% } %>
+        </ul>
+
+    </nav>
+
+</header>
+    
+
+
+
+<script defer src="/js/topnav.js"></script>
+
+
+<div id="div_nav">
+
+</div>

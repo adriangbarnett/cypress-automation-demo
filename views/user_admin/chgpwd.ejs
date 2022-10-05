@@ -1,0 +1,30 @@
+<%- include('../include/head.ejs') %>
+
+<body>
+    <%- include('../include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+    <h1>Change Password</h1>
+    
+
+    <div id="div_user">
+        <form id="form_chgpwd" action="/admin/user/chgpwd?id=<%=response.id%>" method="post">
+            <input id="input_id" name="id" type="text" value="<%=response.id%>" readonly hidden>
+            <input id="input_password" name="password" type="password" autocomplete="off" placeholder="password">
+            <input id="input_confirmpassword" name="confirmpassword" type="password" autocomplete="off" placeholder="confirm password">
+            
+        </form>
+    </div>
+
+    <div id="div_links">
+        <a id="link_cancel" href="/admin/user/edit?id=<%=response.id%>" class="btn btn-sm btn-danger">Cancel</a>
+        <button id="button_submit" type="submit" form="form_chgpwd" class="btn btn-sm btn-primary">Save</button>
+    </div>
+    
+
+    <%- include('../include/response.ejs', {response: response}) %>
+    <%- include('../include/alert.ejs', {response: response}) %>
+    
+</body>
+
+ <!-- fix status select box value AFTER the form have loaded, we wil use "title" to get value -->
+ <script defer language="JavaScript" type="text/javascript" src="/js/status.js"></script>

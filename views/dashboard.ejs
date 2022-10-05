@@ -1,0 +1,21 @@
+<%- include('./include/head.ejs') %>
+
+<body>
+    <%- include('./include/topnav.ejs', {topnavproperties: topnavproperties}) %>
+
+    <h1>Dashboard</h1>
+    <div id="div_links">
+    </div>
+    
+    <div id="div_topnavproperties">
+        <p id="topnavproperties.username">topnavproperties.username=<%=topnavproperties.username%></p>
+        <p id="topnavproperties.page">topnavproperties.page=<%=topnavproperties.page%></p>
+        <p id="topnavproperties.myCookie">topnavproperties.myCookie=<%=topnavproperties.myCookie%></p>
+        <p id="topnavproperties.myCookieLength">topnavproperties.myCookieLength=<%=topnavproperties.myCookieLength%></p>
+        <p id="topnavproperties.roles">topnavproperties.roles=<%=topnavproperties.roles%></p>
+        <p id="topnavproperties.permissions">topnavproperties.permissions=<%=topnavproperties.permissions%></p>
+    </div>
+    
+    <%- include('./include/response.ejs', {response: response}) %>
+    <%- include('./include/alert.ejs', {response: response}) %>
+</body>

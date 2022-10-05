@@ -1,0 +1,55 @@
+<!-- alert messages -->
+<div id="div_flash">
+    
+    
+    <% if (response.alert) { %>
+
+        <% let style = "" %>
+        <% let s = "" %>
+        <% let p = "" %>
+        <% let show = true %>
+
+        <% if (response.alert == "danger")  { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = response.message; show = true; }  %>
+        <% if (response.alert == "warning") { style="alert alert-danger flashAlert-bottom";     s = "Warning:";     p = response.message; show = true; }  %>
+        <% if (response.alert == "info")    { style="alert alert-info flashAlert-bottom";       s = "Info:";        p = response.message; show = true; }  %>
+        <% if (response.alert == "success") { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = response.message; show = true; }  %>
+
+        <% if (response.alert == 1)     { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Incorrect username or password, or account is not active"; show = true; }  %>
+        <% if (response.alert == 2)     { style="alert alert-info flashAlert-bottom";       s = "Info:";        p = "Check your email for reset password link"; show = true; }  %>
+        <% if (response.alert == 3)     { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = "Password has been changed"; show = true; }  %>
+        <% if (response.alert == 4)     { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = "User created, please login to continue"; show = true; } %>
+        <% if (response.alert == 5)     { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "You do not have the required permission to delete this user"; show = true; } %>
+        <% if (response.alert == 6)     { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "User not found"; show = true; } %>
+        <% if (response.alert == 7)     { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = "User deleted"; show = true; } %>
+        <% if (response.alert == 8)     { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = "User updated"; show = true; } %>
+        <% if (response.alert == 9)     { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Account disabled"; show = true; } %>
+        <% if (response.alert == 10)    { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "You do not have the required permission to modify this user"; show = true; } %>
+        <% if (response.alert == 11)    { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Invalid id"; show = true; }  %>
+        <% if (response.alert == 12)    { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Missing password"; show = true; } %>
+        <% if (response.alert == 13)    { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Passwords do not match"; show = true; } %>
+        <% if (response.alert == 14)    { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Missing username"; show = true; } %>
+        <% if (response.alert == 15)    { style="alert alert-danger flashAlert-bottom";     s = "Error:";       p = "Missing email"; show = true; } %>
+        <% if (response.alert == 16)     { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = "Profile updated"; show = true; } %>
+        <% if (response.alert == 1000)  { style="alert alert-success flashAlert-bottom";    s = "Success:";     p = "Dev users created"; show = true; } %>
+        <% %>
+        <% %>
+        <% %>
+        <% %>
+        <% %>
+        <% %>
+        <% %>
+
+        <% if (show === true) { %>
+            <div class="<%=style%>"> 
+                <p><strong><%=s%></strong> <%=p%></p>
+                <span id="close" class="close flashAlert-btn " data-dismiss="alert" aria-label="Close" onclick="this.parentNode.remove(); return false;">x</span>
+            </div>
+        <% } %>   
+
+    <% } %>
+
+
+</div>
+
+
+
