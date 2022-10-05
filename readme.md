@@ -26,7 +26,7 @@ MONGODB_URL=mongodb://localhost:27017/automationDemo
 # Git
 git remote add origin https://github.com/adriangbarnett/cypress-automation-demo.git
 git add .
-git commit -m "update"
+git commit -m "add cypress demo"
 git push -u origin master
 
 
