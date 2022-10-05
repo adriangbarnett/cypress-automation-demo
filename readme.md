@@ -16,7 +16,6 @@ MONGODB_URL=mongodb://localhost:27017/automationDemo
 # Setup
 - install dependnecnies: $ npm i
 - run the server: $ npm run dev
-- run the test: $ npm test ./tests/testcase.test.js
 
 # Cypress
 - tutorial: https://www.youtube.com/playlist?list=PLzDWIPKHyNmK9NX9_ng2IdrkEr8L4WwB0
