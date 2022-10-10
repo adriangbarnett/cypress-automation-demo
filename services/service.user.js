@@ -202,7 +202,7 @@ async function getUserByEmail(email){
     }
 }
 
-// fin duser by token
+// find user by token
 async function getUserByToken(token){
     try {
 

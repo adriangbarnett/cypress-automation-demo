@@ -248,7 +248,7 @@ async function resetpwd_post(req, res) {
 
 // user click reset password link, check url data when show set new password page
 // we dont expose the database ID in the URL, we seearch for user by the generated token
-async function setpwd_get(req, res) {
+async function useToken_get(req, res) { //setpwd_get
 
     try {
 
@@ -279,10 +279,9 @@ async function setpwd_get(req, res) {
                     message: "token not found",
                     method: "setpwd_get",
                     error: null,
-                    alert: req.query.alert
+                    alert: "danger"
                 },
                 topnavproperties: req.topnavproperties,
-                token: newData.token
             });
         }
 
@@ -293,11 +292,11 @@ async function setpwd_get(req, res) {
             return res.render("error", {
                 response: {
                     code: 400,
-                    heading: null,
+                    heading: "Error",
                     message: "token expired",
                     method: "setpwd_get",
                     error: null,
-                    alert: req.query.alert
+                    alert: "danger"
                 },
                 topnavproperties: req.topnavproperties,
             });
@@ -334,7 +333,7 @@ async function setpwd_get(req, res) {
 }
 
 // user inputed password, update user id
-async function setpwd_post(req, res) {
+async function useToken_post(req, res) { //setpwd_post
 
     try {
 
@@ -1204,8 +1203,8 @@ module.exports =  {
     signup_get,
     resetpwd_get,
     resetpwd_post,
-    setpwd_get,
-    setpwd_post,
+    useToken_get,
+    useToken_post,
     signup_post,
     //
     users_get,

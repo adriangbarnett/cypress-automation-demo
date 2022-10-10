@@ -5,11 +5,12 @@
 
     <h1><%=response.heading%></h1>
 
+    
+
+    <%- include('./include/response.ejs', {response: response}) %>
+
     <div id="div_links">
         <a href="/" id="link_index" class="btn bt-sm btn-primary">Back</a>
     </div>
-
-    <%- include('./include/response.ejs', {response: response}) %>
-    <%- include('./include/alert.ejs', {response: response}) %>
 
 </body>

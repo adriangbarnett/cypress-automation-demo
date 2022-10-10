@@ -22,8 +22,8 @@ router.get("/signup", navController.setNav("register", false), passportService.i
 router.post("/signup", navController.setNav("register", false), passportService.isNotAuth, userController.signup_post);
 router.get("/resetpwd", navController.setNav("login", false), passportService.isNotAuth, userController.resetpwd_get);
 router.post("/resetpwd", navController.setNav("login", false), passportService.isNotAuth, userController.resetpwd_post);
-router.get("/setpwd", navController.setNav("login", false), passportService.isNotAuth, userController.setpwd_get);
-router.post("/setpwd", navController.setNav("login", false), passportService.isNotAuth, userController.setpwd_post);
+router.get("/setpwd", navController.setNav("login", false), passportService.isNotAuth, userController.useToken_get);
+router.post("/setpwd", navController.setNav("login", false), passportService.isNotAuth, userController.useToken_post);
 
 // auth
 router.get("/dashboard", navController.setNav("dashboard", true), passportService.isAuth, adminController.dashboard_get);
